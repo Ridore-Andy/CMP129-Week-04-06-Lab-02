@@ -2,53 +2,66 @@ public class SortingBenchmarks
 {
     public static void main(String[] args) 
     {
-        int[] array1 = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
-        int[] array2 = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
-
-        bubbleSort(array1);
-        //selectionSort(array2);
+        int[] array1 = {12,13,67,45,34,78,22,31,48,90,99,86,66,67,332,10,1,4,9,6};
+        int[] array2 = {12,13,67,45,34,78,22,31,48,90,99,86,66,67,332,10,1,4,9,6};
 
         //bubble sort display
+        bubbleSort(array1);
         System.out.println("Bubble Sort Array:");
         for(int num:array1)
         {System.out.print(num+" ");}
-        System.out.println("Number of exchanges: ");
+        System.out.println("\nNumber of exchanges: ");
 
         //selection sort display
-        System.out.println("Selection Sort Array:");
-
-        
+        selectionSort(array2);
+        System.out.println("\nSelection Sort Array:");
+        for(int num:array2)
+        {System.out.print(num+" ");}
+        System.out.println("\nNumber of exchanges: ");  
     }
 
     //bubble sort
-    public static void bubbleSort(int[] array1)
+    public int bubbleSort(int[] array1)
     {
-        int s = array1.length;
-
-        for(int i=0; i < s-1; i++)
+        int counter = 0;
+        int n = array1.length;
+        for(int i=0; i < n-1; i++)
         {
-            for(int j=0; j < s-i-1; j++)
+            for(int j=0; j < n-i-1; j++)
             {
                 if(array1[j] > array1[j+1])
                 {
                     int temp = array1[j];//temporarily stores current value
                     array1[j] = array1[j+1];//moves smaller value to left
                     array1[j+1] = temp;//adds temp value to right
+                    counter++;
                 }
             }
         }
+        return counter;
     }
     
     //selection sort
-    public static void selectionSort(int[] array2)
+    public int selectionSort(int[] array2)
     {
+        int counter = 0;
         int n = array2.length;
         for(int i=0; i < n-1; i++)
         {
             int minValue = i;
-            
-        }
-
+            for(int j = i+1; j<n; j++)
+            {
+                if(array2[j] < array2[minValue])
+                {minValue = j;}
+            }
+            if(minValue != i) 
+            {
+                int temp = array2[i];
+                array2[i] = array2[minValue];
+                array2[minValue] = temp;
+                counter++;
+            }
+        }    
+        return counter;
     }
-    
 }
