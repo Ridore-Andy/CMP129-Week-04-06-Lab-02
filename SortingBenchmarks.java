@@ -6,22 +6,22 @@ public class SortingBenchmarks
         int[] array2 = {12,13,67,45,34,78,22,31,48,90,99,86,66,67,332,10,1,4,9,6};
 
         //bubble sort display
-        bubbleSort(array1);
+        int bubbleCount = bubbleSort(array1);
         System.out.println("Bubble Sort Array:");
         for(int num:array1)
         {System.out.print(num+" ");}
-        System.out.println("\nNumber of exchanges: ");
+        System.out.println("\nNumber of exchanges: "+bubbleCount);
 
         //selection sort display
-        selectionSort(array2);
+        int selectionCount = selectionSort(array2);
         System.out.println("\nSelection Sort Array:");
         for(int num:array2)
         {System.out.print(num+" ");}
-        System.out.println("\nNumber of exchanges: ");  
+        System.out.println("\nNumber of exchanges: "+selectionCount);  
     }
 
     //bubble sort
-    public int bubbleSort(int[] array1)
+    public static int bubbleSort(int[] array1)
     {
         int counter = 0;
         int n = array1.length;
@@ -42,7 +42,7 @@ public class SortingBenchmarks
     }
     
     //selection sort
-    public int selectionSort(int[] array2)
+    public static int selectionSort(int[] array2)
     {
         int counter = 0;
         int n = array2.length;
